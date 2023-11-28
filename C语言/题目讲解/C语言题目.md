@@ -59,6 +59,27 @@ int main(){
 ```
 
 3. 
-```c
+```cpp
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+using namespace std;
+int main(){
+    int n;cin >> n;
+    bool cmp(string,string);
+    string number[n];
+    for(int i=0;i<n;++i)
+        cin >> number[i];
 
+    sort(number,number+n,cmp);
+
+    for(int i=0;i<n;++i)
+        cout << number[i];
+    cout << endl;
+    return 0;
+}
+
+bool cmp(string a,string b){
+    return a+b>b+a;
+}
 ```
