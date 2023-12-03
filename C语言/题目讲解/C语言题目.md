@@ -83,3 +83,6 @@ bool cmp(string a,string b){
     return a+b>b+a;
 }
 ```
+
+4.这个就按照题目中的意思去累加就可以了，分子用一个变量控制，分母用另一个变量控制。
+
