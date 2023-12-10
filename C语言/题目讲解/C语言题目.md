@@ -58,7 +58,7 @@ int main(){
 }
 ```
 
-3. 
+3. 这道题用 C++ 解比较好，原题是洛谷的 P1012，题解很多很详细，感兴趣的可以自己搜搜。这里就放出代码不讲了。
 ```cpp
 #include<iostream>
 #include<cstring>
