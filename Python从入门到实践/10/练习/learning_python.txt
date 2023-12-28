@@ -1,0 +1,4 @@
+In Python you can mess up all of your files.
+In Python you can run dangerous scripts with the module sys.
+In Python you can create a game wich contains millions of bugs.
+In Python you can simulate real world's objects with classes.
