@@ -49,7 +49,34 @@ class AlienInvasion:
     # Draw many aliens
     def _create_fleet(self):
         alien=Alien(self)
+        alien_width,alien_height=alien.rect.size
+        current_x,current_y=alien_width,alien_height
+        while current_y < (self.settings.screen_height - 2 * alien_height):
+            while current_x < (self.settings.screen_width - 2 * alien_width):
+                self._create_alien(current_x,current_y)
+                current_x+=2*alien_width
+            current_x=alien_width
+            current_y+=2*alien_height
         self.aliens.add(alien)
+
+    def _create_alien(self,x,y):
+        new_alien = Alien(self)
+        new_alien.x, new_alien.y = x,y
+        new_alien.rect.x, new_alien.rect.y = x, y
+        self.aliens.add(new_alien)
+        
+    # Check if aliens are at the edge of the window
+    def _check_fleet_edges(self):
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+    
+    def _change_fleet_direction(self):
+        for alien in self.aliens.sprites():
+            alien.rect.y+=self.settings.fleet_drop_speed
+        self.settings.fleet_direction*=-1
+
 
     # Remove the bullets when it is out of range
     def _update_bullets(self):
@@ -60,11 +87,17 @@ class AlienInvasion:
             if bullet.rect.bottom<=0:
                 self.bullets.remove(bullet)
 
+    # Move aliens
+    def _update_aliens(self):
+        self._check_fleet_edges()
+        self.aliens.update()
+
     def run_game(self):
         while True:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
             # Set the frame to 60
             self.clock.tick(60)
