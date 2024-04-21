@@ -38,6 +38,7 @@ ax.set_xlabel('',fontsize=16)
 fig.autofmt_xdate()
 ax.set_ylabel("Temperature (F)",fontsize=16)
 ax.tick_params(labelsize=16)
+ax.xticks=(10,80,10)
 
 # Show
 plt.show()
